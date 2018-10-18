@@ -31,7 +31,7 @@ install:
   - conda build -q conda-recipe --python $TRAVIS_PYTHON_VERSION --output-folder bld-dir
   - conda config --add channels "file://`pwd`/bld-dir"
   # Create test environment
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION jet_tracking --file dev-requirements.txt
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION jet_tracking --file requirements-dev.txt
   - source activate test-environment
 
 script:
