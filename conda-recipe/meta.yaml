@@ -19,7 +19,7 @@ requirements:
     - python {{PY_VER}}*,>=3.6
     - pyyaml
     - pcdsdevices >=1.0.0
-    - hutch_python >=1.0.0
+    - hutch-python >=1.0.0
     - happi >1.1.1
     - matplotlib
     - numpy
