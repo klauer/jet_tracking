@@ -882,3 +882,24 @@ class Diffract(Device, _TableMixin):
                         doc='Diffraction periodogram Frequency analysis amplitude array')
     state = Cpt(EpicsSignal, ':STATE',
                 doc='State of diffraction analysis')
+
+
+def _generate_mock_ioc(devices=None):
+    'Generate a caproto testing IOC for all devices in jet_tracking'
+    from caproto.server import conversion
+
+    if devices is None:
+        devices = [Injector, Selector, CoolerShaker, HPLC, PressureController,
+                   FlowIntegrator, Offaxis, Questar, Parameters, OffaxisParams,
+                   Control, Diffract]
+
+    conversion.max_code_columns = 100
+
+    for device in devices:
+        info = conversion.ophyd_device_to_caproto_ioc(device)
+        for dev_name, lines in info.items():
+            print()
+            print()
+            print(f'# -- {dev_name} --')
+            for line in lines:
+                print(line)
